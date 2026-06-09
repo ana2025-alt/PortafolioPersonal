@@ -1,49 +1,121 @@
-/**
- * @fileoverview Lógica principal e inicialización de eventos globales.
- * @author Ana Anselmi
- * @project Colección Copa 2026 - Fase 3
- */
+// T3 - Datos Mockeados Completos (Sello Colección Copa)
+const productos = [
+    { id: 1, nombre: "Camiseta México - Colección Copa", precio: 95, stock: 8, imagen: "imagenes/image_2ad539.jpg" },
+    { id: 2, nombre: "Camiseta Argentina - Colección Copa", precio: 110, stock: 3, imagen: "imagenes/image_2ad1f3.jpg" },
+    { id: 3, nombre: "Camiseta Brasil - Colección Copa", precio: 105, stock: 5, imagen: "imagenes/image_2ad1bd.jpg" },
+    { id: 4, nombre: "Camiseta Alemania - Colección Copa", precio: 100, stock: 4, imagen: "imagenes/image_2ad197.jpg" },
+    { id: 5, nombre: "Camiseta Italia - Colección Copa", precio: 90, stock: 0, imagen: "imagenes/image_2ad15e.jpg" },
+    { id: 6, nombre: "Camiseta Portugal - Colección Copa", precio: 100, stock: 6, imagen: "imagenes/image_2ad13e.jpg" },
+    { id: 7, nombre: "Camiseta España - Colección Copa", precio: 95, stock: 7, imagen: "imagenes/image_2ad11d.jpg" },
+    { id: 8, nombre: "Balón Oficial Trionda 2026", precio: 160, stock: 10, imagen: "imagenes/image_2a605c.jpg" },
+    { id: 9, nombre: "Gorra Sedes Copa 2026", precio: 25, stock: 15, imagen: "imagenes/image_2a5d7a.jpg" },
+    { id: 10, nombre: "Gorra World Cup Verde", precio: 30, stock: 12, imagen: "imagenes/image_2a5d55.jpg" },
+    { id: 11, nombre: "Gorra Sedes USA/Canadá", precio: 25, stock: 20, imagen: "imagenes/image_2a5d1d.jpg" },
+    { id: 12, nombre: "Bufanda Oficial Mundial 2026", precio: 20, stock: 25, imagen: "imagenes/image_2a5c9e.jpg" }
+];
 
-import { renderizarProductos, actualizarInterfaz, mostrarNotificacion } from './uiManager.js';
-import { carrito, vaciarCarrito } from './cartEngine.js';
+let carrito = [];
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderizarProductos();
-    actualizarInterfaz();
+// T4 - Render de productos en la grilla (Soporta filtrado)
+function renderizarProductos(listaAMostrar = productos) {
+    const contenedor = document.getElementById('contenedor-productos');
+    if (!contenedor) return;
+    
+    contenedor.innerHTML = "";
+    
+    if (listaAMostrar.length === 0) {
+        contenedor.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #666; padding: 20px;">No se encontraron productos.</p>`;
+        return;
+    }
 
-    // Capturar el evento de confirmación de pedido de forma directa en el body
-    document.body.addEventListener('click', (e) => {
-        // Buscamos si hicieron clic en el botón de confirmar (por su clase o tipo)
-        if (e.target.matches('.btn-checkout') || e.target.closest('.btn-checkout') || e.target.matches('button[type="submit"]')) {
-            e.preventDefault();
-
-            // 1. Validar que el carrito tenga productos
-            if (!carrito || carrito.length === 0) {
-                mostrarNotificacion('El carrito está vacío. Añade productos antes de confirmar.', 'error');
-                return;
-            }
-
-            // 2. Buscar inputs de datos del cliente
-            const inputEmail = document.querySelector('input[type="email"]');
-            const inputNombre = document.querySelector('input[type="text"]');
-
-            const email = inputEmail ? inputEmail.value.trim() : '';
-            const nombre = inputNombre ? inputNombre.value.trim() : 'Cliente';
-
-            // 3. Validación de correo electrónico
-            if (!email || !email.includes('@') || email.length < 5) {
-                mostrarNotificacion('Por favor, ingresa un correo electrónico válido.', 'error');
-                return;
-            }
-
-            // 4. ALERTA MODERNA DE ÉXITO EXITOSO
-            mostrarNotificacion(`¡Pedido realizado exitosamente! Gracias por tu compra, ${nombre}. Enviaremos los detalles a: ${email}`, 'success');
-
-            // 5. Resetear interfaz
-            vaciarCarrito();
-            actualizarInterfaz();
-            if (inputEmail) inputEmail.value = '';
-            if (inputNombre) inputNombre.value = '';
-        }
+    listaAMostrar.forEach(p => {
+        const agotado = p.stock === 0;
+        contenedor.innerHTML += `
+            <div class="product-card">
+                <img src="${p.imagen}" alt="${p.nombre}">
+                <h3>${p.nombre}</h3>
+                <span class="price">$${p.precio}</span>
+                <p style="font-size: 0.75rem; color: #666; margin-bottom: 10px;">Stock: ${p.stock}</p>
+                <button class="btn-add" onclick="agregarAlCarrito(${p.id})" ${agotado ? 'disabled' : ''}>
+                    ${agotado ? 'SIN STOCK' : 'AÑADIR'}
+                </button>
+            </div>`;
     });
+}
+
+// T5 - Lógica para añadir al carrito
+window.agregarAlCarrito = function(id) {
+    const p = productos.find(x => x.id === id);
+    const item = carrito.find(x => x.id === id);
+    if (item) {
+        if (item.cantidad < p.stock) {
+            item.cantidad++;
+        } else {
+            alert("⚠️ Límite de stock alcanzado para este producto.");
+            return;
+        }
+    } else {
+        carrito.push({ ...p, cantidad: 1 });
+    }
+    renderizarCarrito();
+};
+
+// T7 y T8 - Renderizado del carrito y cálculo de promo
+function renderizarCarrito() {
+    const cont = document.getElementById('items-carrito');
+    const subElem = document.getElementById('subtotal-val');
+    const totElem = document.getElementById('total-val');
+    const promo = document.getElementById('promo-msg');
+
+    cont.innerHTML = carrito.length === 0 ? '<p class="empty-msg">El carrito está vacío</p>' : '';
+    let subtotal = 0;
+    
+    carrito.forEach(item => {
+        subtotal += item.precio * item.cantidad;
+        cont.innerHTML += `
+            <div class="item-carrito">
+                <span>${item.nombre} (x${item.cantidad})</span>
+                <span>$${item.precio * item.cantidad}</span>
+            </div>`;
+    });
+
+    // Promo 10% si hay 3 o más líneas distintas (Requisito Fase 1)
+    let desc = carrito.length >= 3 ? subtotal * 0.1 : 0;
+    promo.style.display = desc > 0 ? "block" : "none";
+
+    subElem.innerText = `$${subtotal.toFixed(2)}`;
+    totElem.innerText = `$${(subtotal - desc).toFixed(2)}`;
+}
+
+// 🌐 DETONADORES DE EVENTOS INTERACTIVOS (Buscador y Confirmar)
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inicializar la carga visual
+    renderizarProductos();
+    
+    // 2. Lógica del Buscador en tiempo real
+    const barraBusqueda = document.getElementById('buscador');
+    if (barraBusqueda) {
+        barraBusqueda.addEventListener('input', (e) => {
+            const texto = e.target.value.toLowerCase().trim();
+            const productosFiltrados = productos.filter(p => 
+                p.nombre.toLowerCase().includes(texto)
+            );
+            renderizarProductos(productosFiltrados);
+        });
+    }
+
+    // 3. Lógica del Botón Confirmar Pedido
+    const btnConfirmar = document.getElementById('btn-confirmar');
+    if (btnConfirmar) {
+        btnConfirmar.addEventListener('click', () => {
+            if (carrito.length === 0) {
+                alert("🛒 El carrito está vacío. Añade productos antes de confirmar.");
+                return;
+            }
+            
+            alert("🎉 ¡Pedido confirmado exitosamente! Gracias por comprar en la Colección Copa 2026.");
+            carrito = [];
+            renderizarCarrito();
+        });
+    }
 }); 

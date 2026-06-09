@@ -1,5 +1,11 @@
-/* --- RESET Y FUENTES --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ==========================================================================
+   1. RESET GENERAL Y FUENTES BASE
+   ========================================================================== */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body { 
     font-family: 'Roboto', sans-serif; 
@@ -12,18 +18,23 @@ body {
     min-height: 100vh;
 }
 
-/* --- ELEMENTOS FLOTANTES ULTRA LLAMATIVOS --- */
+/* ==========================================================================
+   2. ELEMENTOS ANIMADOS FLOTANTES (EFECTOS VISUALES)
+   ========================================================================== */
 .area-flotante {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
     z-index: -1;
     pointer-events: none;
 }
 
 .flotante {
     position: absolute;
-    opacity: 0.4; /* Subida de opacidad para que se vean claros */
-    filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.8)) drop-shadow(0 0 5px #ffd700); /* Destello de luz */
+    opacity: 0.4; 
+    filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.8)) drop-shadow(0 0 5px #ffd700); 
     animation: flotarYRotar 18s linear infinite;
     user-select: none;
 }
@@ -35,7 +46,9 @@ body {
     100% { transform: translateY(-20vh) rotate(720deg) scale(1.1); opacity: 0; }
 }
 
-/* --- NAVEGACIÓN --- */
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR)
+   ========================================================================== */
 .navbar { 
     background: rgba(0, 31, 91, 0.95); 
     backdrop-filter: blur(10px);
@@ -43,19 +56,29 @@ body {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    position: sticky; top: 0; 
+    position: sticky; 
+    top: 0; 
     z-index: 100; 
     border-bottom: 2px solid #ffd700;
 }
 
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.5rem; color: #ffd700; }
+.logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-weight: 900; 
+    font-size: 1.5rem; 
+    color: #ffd700; 
+}
 
-/* --- CONTENEDOR PRINCIPAL CONTROLLING LAYOUT --- */
+/* ==========================================================================
+   4. DISTRIBUCIÓN DEL LAYOUT PRINCIPAL (CONTENEDORES)
+   ========================================================================== */
 .container { 
     display: flex; 
     padding: 30px 5%; 
     gap: 30px; 
-    align-items: flex-start; /* Evita que el carrito se estire verticalmente */
+    align-items: flex-start; 
 }
 
 .products-area { 
@@ -64,20 +87,26 @@ body {
 }
 
 .section-title { 
-    margin-bottom: 25px; font-weight: 900; 
-    text-transform: uppercase; border-bottom: 3px solid #ffd700; 
-    display: inline-block; color: #ffd700;
+    margin-bottom: 25px; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    border-bottom: 3px solid #ffd700; 
+    display: inline-block; 
+    color: #ffd700;
 }
 
-/* GRILLA PROFESIONAL: Productos uno al lado del otro de forma seguida */
-.grid-products, #contenedor-productos { 
+/* GRILLA: Productos ordenados dinámicamente */
+.grid-products, 
+#contenedor-productos { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
     gap: 25px; 
     width: 100%;
 }
 
-/* TARJETAS GLASSMORPHISM CON INTERACCIÓN */
+/* ==========================================================================
+   5. TARJETAS DE CATÁLOGO (GLASSMORPHISM CON INTERACCIÓN)
+   ========================================================================== */
 .product-card { 
     background: rgba(255, 255, 255, 0.06); 
     backdrop-filter: blur(12px);
@@ -99,28 +128,58 @@ body {
 }
 
 .product-card img { 
-    width: 100%; height: 200px; 
+    width: 100%; 
+    height: 200px; 
     object-fit: contain; 
     margin-bottom: 15px;
     transition: transform 0.3s;
 }
-.product-card:hover img { transform: scale(1.05); }
 
-.price { color: #ffd700; font-weight: 900; font-size: 1.4rem; display: block; margin: 10px 0; }
-.stock-label { font-size: 0.85rem; opacity: 0.7; margin-bottom: 12px; }
-
-/* --- BOTONES --- */
-.btn-add { 
-    background: linear-gradient(45deg, #001f5b, #00509d); color: white; border: none; 
-    padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: 700;
-    text-transform: uppercase; transition: all 0.3s ease;
+.product-card:hover img { 
+    transform: scale(1.05); 
 }
-.btn-add:hover { background: #ffd700; color: #001f5b; }
-.btn-add:disabled { background: rgba(255,255,255,0.1); color: #666; cursor: not-allowed; }
+
+.price { 
+    color: #ffd700; 
+    font-weight: 900; 
+    font-size: 1.4rem; 
+    display: block; 
+    margin: 10px 0; 
+}
+
+.stock-label { 
+    font-size: 0.85rem; 
+    opacity: 0.7; 
+    margin-bottom: 12px; 
+}
 
 /* ==========================================================================
-   INTERACCIÓN TIPO FARMATODO (ESTILOS TEMPORALES DEL BOTÓN CLICADO)
+   6. BOTONES DE ACCIÓN E INTERACCIÓN TIPO FARMATODO
    ========================================================================== */
+.btn-add { 
+    background: linear-gradient(45deg, #001f5b, #00509d); 
+    color: white; 
+    border: none; 
+    padding: 12px; 
+    width: 100%; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: 700;
+    text-transform: uppercase; 
+    transition: all 0.3s ease;
+}
+
+.btn-add:hover { 
+    background: #ffd700; 
+    color: #001f5b; 
+}
+
+.btn-add:disabled { 
+    background: rgba(255,255,255,0.1); 
+    color: #666; 
+    cursor: not-allowed; 
+}
+
 .btn-add.btn-agregado {
     background: linear-gradient(45deg, #1e7e34, #28a745) !important;
     color: #ffffff !important;
@@ -128,7 +187,9 @@ body {
     box-shadow: 0 0 12px rgba(40, 167, 69, 0.4);
 }
 
-/* --- SIDEBAR DEL CARRITO ORIGINAL (A la derecha) --- */
+/* ==========================================================================
+   7. SECCIÓN LATERAL (CARRITO DE COMPRAS DE LA COMPRA)
+   ========================================================================== */
 .cart-sidebar { 
     flex: 1; 
     min-width: 320px;
@@ -137,26 +198,99 @@ body {
     border: 1px solid rgba(255,255,255,0.15); 
     border-radius: 15px; 
     padding: 25px; 
-    position: sticky; top: 100px; 
+    position: sticky; 
+    top: 100px; 
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.cart-header { font-weight: 900; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px; color: #ffd700; font-size: 1.2rem; }
-.item-carrito { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0; font-size: 0.9rem; }
-.summary-line { display: flex; justify-content: space-between; margin: 10px 0; font-size: 1rem; }
-.promo-badge { background: #ffd700; color: #001f5b; padding: 5px; text-align: center; font-weight: bold; font-size: 0.75rem; border-radius: 4px; margin: 5px 0; }
-.total { font-weight: 900; font-size: 1.4rem; color: #ffd700; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.1); }
+.cart-header { 
+    font-weight: 900; 
+    border-bottom: 2px solid rgba(255,255,255,0.1); 
+    padding-bottom: 10px; 
+    margin-bottom: 15px; 
+    color: #ffd700; 
+    font-size: 1.2rem; 
+}
 
-/* --- FORMULARIO --- */
-.checkout-form { margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-.input-form { width: 100%; padding: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; outline: none; }
-.input-form:focus { border-color: #ffd700; box-shadow: 0 0 10px rgba(255,215,0,0.2); }
+.item-carrito { 
+    display: flex; 
+    justify-content: space-between; 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    padding: 10px 0; 
+    font-size: 0.9rem; 
+}
 
-.btn-checkout { background: linear-gradient(45deg, #28a745, #34ce57); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-.btn-checkout:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(40, 167, 69, 0.4); }
+.summary-line { 
+    display: flex; 
+    justify-content: space-between; 
+    margin: 10px 0; 
+    font-size: 1rem; 
+}
+
+.promo-badge { 
+    background: #ffd700; 
+    color: #001f5b; 
+    padding: 5px; 
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 0.75rem; 
+    border-radius: 4px; 
+    margin: 5px 0; 
+}
+
+.total { 
+    font-weight: 900; 
+    font-size: 1.4rem; 
+    color: #ffd700; 
+    padding-top: 15px; 
+    border-top: 2px solid rgba(255,255,255,0.1); 
+}
 
 /* ==========================================================================
-   NOTIFICACIONES MODALES PERSONALIZADAS (DISEÑO OSCURO E INTEGRADO)
+   8. CAMPOS DE ENTRADA Y FORMULARIO DE ENVÍO (CHECKOUT)
+   ========================================================================== */
+.checkout-form { 
+    margin-top: 20px; 
+    padding-top: 15px; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+}
+
+.input-form { 
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 12px; 
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.2); 
+    border-radius: 8px; 
+    color: white; 
+    outline: none; 
+}
+
+.input-form:focus { 
+    border-color: #ffd700; 
+    box-shadow: 0 0 10px rgba(255,215,0,0.2); 
+}
+
+.btn-checkout { 
+    background: linear-gradient(45deg, #28a745, #34ce57); 
+    color: white; 
+    border: none; 
+    padding: 15px; 
+    width: 100%; 
+    border-radius: 8px; 
+    font-weight: 900; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    transition: 0.3s; 
+}
+
+.btn-checkout:hover { 
+    transform: scale(1.02); 
+    box-shadow: 0 0 20px rgba(40, 167, 69, 0.4); 
+}
+
+/* ==========================================================================
+   9. NOTIFICACIONES MODALES TOAST PREMIUM
    ========================================================================== */
 .custom-toast {
     position: fixed;
@@ -167,7 +301,7 @@ body {
     color: #ffffff;
     padding: 16px 24px;
     border-radius: 10px;
-    border-left: 5px solid #ffd700; /* Borde amarillo Copa */
+    border-left: 5px solid #ffd700; 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
     z-index: 2000;
     font-weight: 600;
@@ -179,7 +313,7 @@ body {
 }
 
 .custom-toast.error {
-    border-left-color: #dc3545; /* Rojo para errores de validación */
+    border-left-color: #dc3545; 
 }
 
 @keyframes toastSlideIn {
@@ -188,19 +322,18 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVIDAD Y BREAKPOINTS OPTIMIZADOS
+   10. MEDIA QUERIES (OPTIMIZACIÓN TOTAL PARA SMARTPHONES)
    ========================================================================== */
-/* --- RESPONSIVIDAD (SOLUCIÓN DISPOSITIVOS MÓVILES) --- */
 @media (max-width: 950px) {
     .container { 
         display: flex !important;
-        flex-direction: column !important; /* Alinea los elementos uno abajo del otro */
+        flex-direction: column !important; 
         padding: 20px 4%;
     }
     
     .products-area { 
         width: 100% !important; 
-        order: 2 !important; /* Mueve el catálogo de productos ABAJO */
+        order: 2 !important; 
     }
 
     .cart-sidebar { 
@@ -209,14 +342,19 @@ body {
         position: static !important; 
         margin-top: 10px;
         margin-bottom: 30px;
-        order: 1 !important; /* Mueve el carrito de compras ARRIBA del todo */
+        order: 1 !important; 
     }
 }
 
 @media (max-width: 580px) {
-    .grid-products, #contenedor-productos {
+    .grid-products, 
+    #contenedor-productos {
         grid-template-columns: 1fr !important;
         justify-items: center;
     }
-    .product-card { width: 100%; max-width: 320px; }
+    
+    .product-card { 
+        width: 100%; 
+        max-width: 320px; 
+    }
 } 
