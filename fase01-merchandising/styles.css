@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESET GENERAL Y FUENTES BASE
+   1. RESET GENERAL Y CONFIGURACIÓN BASE (EDICIÓN PREMIUM)
    ========================================================================== */
 * { 
     margin: 0; 
@@ -10,44 +10,14 @@
 body { 
     font-family: 'Roboto', sans-serif; 
     background: linear-gradient(rgba(0, 10, 30, 0.88), rgba(0, 10, 30, 0.98)), 
-                url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=2000');
-    background-attachment: fixed;
-    background-size: cover;
+                url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=2000') fixed center/cover;
     color: #ffffff; 
     overflow-x: hidden;
     min-height: 100vh;
 }
 
 /* ==========================================================================
-   2. ELEMENTOS ANIMADOS FLOTANTES (EFECTOS VISUALES)
-   ========================================================================== */
-.area-flotante {
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.flotante {
-    position: absolute;
-    opacity: 0.4; 
-    filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.8)) drop-shadow(0 0 5px #ffd700); 
-    animation: flotarYRotar 18s linear infinite;
-    user-select: none;
-}
-
-@keyframes flotarYRotar {
-    0% { transform: translateY(110vh) rotate(0deg) scale(0.8); opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
-    100% { transform: translateY(-20vh) rotate(720deg) scale(1.1); opacity: 0; }
-}
-
-/* ==========================================================================
-   3. BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR)
+   2. BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR)
    ========================================================================== */
 .navbar { 
     background: rgba(0, 31, 91, 0.95); 
@@ -71,8 +41,22 @@ body {
     color: #ffd700; 
 }
 
+.input-form { 
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    width: 250px;
+}
+
+.input-form:focus {
+    border-color: #ffd700;
+}
+
 /* ==========================================================================
-   4. DISTRIBUCIÓN DEL LAYOUT PRINCIPAL (CONTENEDORES)
+   3. DISTRIBUCIÓN DEL LAYOUT GENERAL (CONTENEDORES)
    ========================================================================== */
 .container { 
     display: flex; 
@@ -95,9 +79,8 @@ body {
     color: #ffd700;
 }
 
-/* GRILLA: Productos ordenados dinámicamente */
-.grid-products, 
-#contenedor-productos { 
+/* GRILLA: Productos uno al lado del otro */
+.grid-products { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
     gap: 25px; 
@@ -105,7 +88,7 @@ body {
 }
 
 /* ==========================================================================
-   5. TARJETAS DE CATÁLOGO (GLASSMORPHISM CON INTERACCIÓN)
+   4. TARJETAS DEL CATÁLOGO DE PRODUCTOS (GLASSMORPHISM)
    ========================================================================== */
 .product-card { 
     background: rgba(255, 255, 255, 0.06); 
@@ -122,7 +105,7 @@ body {
 }
 
 .product-card:hover { 
-    transform: translateY(-10px); 
+    transform: translateY(-8px); 
     border-color: #ffd700;
     box-shadow: 0 10px 25px rgba(0, 150, 255, 0.3);
 }
@@ -147,14 +130,8 @@ body {
     margin: 10px 0; 
 }
 
-.stock-label { 
-    font-size: 0.85rem; 
-    opacity: 0.7; 
-    margin-bottom: 12px; 
-}
-
 /* ==========================================================================
-   6. BOTONES DE ACCIÓN E INTERACCIÓN TIPO FARMATODO
+   5. CONTROL DE BOTONES E INTERACCIONES
    ========================================================================== */
 .btn-add { 
     background: linear-gradient(45deg, #001f5b, #00509d); 
@@ -180,15 +157,8 @@ body {
     cursor: not-allowed; 
 }
 
-.btn-add.btn-agregado {
-    background: linear-gradient(45deg, #1e7e34, #28a745) !important;
-    color: #ffffff !important;
-    transform: scale(0.95);
-    box-shadow: 0 0 12px rgba(40, 167, 69, 0.4);
-}
-
 /* ==========================================================================
-   7. SECCIÓN LATERAL (CARRITO DE COMPRAS DE LA COMPRA)
+   6. SIDEBAR DERECHO DEL CARRITO DE COMPRAS
    ========================================================================== */
 .cart-sidebar { 
     flex: 1; 
@@ -230,12 +200,13 @@ body {
 .promo-badge { 
     background: #ffd700; 
     color: #001f5b; 
-    padding: 5px; 
+    padding: 8px; 
     text-align: center; 
     font-weight: bold; 
     font-size: 0.75rem; 
     border-radius: 4px; 
-    margin: 5px 0; 
+    margin-bottom: 15px; 
+    display: none; 
 }
 
 .total { 
@@ -244,31 +215,6 @@ body {
     color: #ffd700; 
     padding-top: 15px; 
     border-top: 2px solid rgba(255,255,255,0.1); 
-}
-
-/* ==========================================================================
-   8. CAMPOS DE ENTRADA Y FORMULARIO DE ENVÍO (CHECKOUT)
-   ========================================================================== */
-.checkout-form { 
-    margin-top: 20px; 
-    padding-top: 15px; 
-    border-top: 1px solid rgba(255,255,255,0.1); 
-}
-
-.input-form { 
-    width: 100%; 
-    padding: 12px; 
-    margin-bottom: 12px; 
-    background: rgba(255,255,255,0.05); 
-    border: 1px solid rgba(255,255,255,0.2); 
-    border-radius: 8px; 
-    color: white; 
-    outline: none; 
-}
-
-.input-form:focus { 
-    border-color: #ffd700; 
-    box-shadow: 0 0 10px rgba(255,215,0,0.2); 
 }
 
 .btn-checkout { 
@@ -282,6 +228,7 @@ body {
     cursor: pointer; 
     text-transform: uppercase; 
     transition: 0.3s; 
+    margin-top: 15px;
 }
 
 .btn-checkout:hover { 
@@ -290,69 +237,32 @@ body {
 }
 
 /* ==========================================================================
-   9. NOTIFICACIONES MODALES TOAST PREMIUM
-   ========================================================================== */
-.custom-toast {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(8px);
-    color: #ffffff;
-    padding: 16px 24px;
-    border-radius: 10px;
-    border-left: 5px solid #ffd700; 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-    z-index: 2000;
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    animation: toastSlideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.custom-toast.error {
-    border-left-color: #dc3545; 
-}
-
-@keyframes toastSlideIn {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* ==========================================================================
-   10. MEDIA QUERIES (OPTIMIZACIÓN TOTAL PARA SMARTPHONES)
+   7. RESPONSIVIDAD PARA APARATOS MÓVILES
    ========================================================================== */
 @media (max-width: 950px) {
     .container { 
-        display: flex !important;
         flex-direction: column !important; 
-        padding: 20px 4%;
+        padding: 20px 4%; 
     }
-    
     .products-area { 
         width: 100% !important; 
         order: 2 !important; 
     }
-
     .cart-sidebar { 
         width: 100% !important; 
-        min-width: 100% !important;
+        min-width: 100% !important; 
         position: static !important; 
-        margin-top: 10px;
-        margin-bottom: 30px;
+        margin-top: 10px; 
+        margin-bottom: 30px; 
         order: 1 !important; 
     }
 }
 
 @media (max-width: 580px) {
-    .grid-products, 
-    #contenedor-productos {
-        grid-template-columns: 1fr !important;
-        justify-items: center;
+    .grid-products { 
+        grid-template-columns: 1fr !important; 
+        justify-items: center; 
     }
-    
     .product-card { 
         width: 100%; 
         max-width: 320px; 
