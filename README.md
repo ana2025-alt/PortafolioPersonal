@@ -37,11 +37,7 @@ El repositorio está estructurado en fases modulares que demuestran la evolució
 * **Descripción:** Catálogo dinámico síncrono conectado a una base de datos externa.
 * **Enfoque Técnico:** Implementación de arquitectura avanzada de software dividida en **Componentes Inteligentes (Contenedores Lógicos)** y **Componentes Puros de Presentación**. Consumo asíncrono de servicios mediante Fetch API a `fakestoreapi.com`, control de estados condicionales (`loading`, `error`, `success`) y diseño estético futurista con *Glassmorphism*.
 
----
 
-## 🛠️ Tecnologías Globales Dominadas
-* **Frontend:** React (v18), JavaScript (ES6+), HTML5, CSS3 (Glassmorphism, Grid, Flexbox)
-* **Herramientas de Entorno:** Vite, Node.js, NPM, Git, GitHub Actions, VS Code
 
 ---
 
