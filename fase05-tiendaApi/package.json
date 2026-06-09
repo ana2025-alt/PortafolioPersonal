@@ -1,6 +1,6 @@
 {
-  "name": "asignacion-04-api",
-  "base": "/PortafolioPersonal/", 
+  "name": "asignacion-05-api",
+  "base": "./", 
   "private": true,
   "version": "0.0.0",
   "type": "module",
