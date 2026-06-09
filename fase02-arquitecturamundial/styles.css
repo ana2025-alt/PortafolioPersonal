@@ -1,14 +1,6 @@
-/* --- CONFIGURACIÓN DE VARIABLES GLOBALES --- */
-:root {
-    --azul-marino: #001f5b;
-    --azul-brillante: #00509d;
-    --dorado-copa: #ffd700;
-    --verde-exito: #28a745;
-    --glass-bg: rgba(255, 255, 255, 0.06);
-    --border-light: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* --- RESET Y CONFIGURACIÓN BASE --- */
+/* ==========================================================================
+   1. RESET, VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================================== */
 * { 
     margin: 0; 
     padding: 0; 
@@ -24,7 +16,9 @@ body {
     min-height: 100vh;
 }
 
-/* --- ESTRUCTURA DE NAVEGACIÓN --- */
+/* ==========================================================================
+   2. ESTRUCTURA DE COMPONENTES DE NAVEGACIÓN
+   ========================================================================== */
 .navbar { 
     background: rgba(0, 31, 91, 0.95); 
     backdrop-filter: blur(10px);
@@ -35,7 +29,7 @@ body {
     position: sticky; 
     top: 0; 
     z-index: 100; 
-    border-bottom: 2px solid var(--dorado-copa);
+    border-bottom: 2px solid #ffd700;
 }
 
 .logo { 
@@ -44,65 +38,70 @@ body {
     gap: 10px; 
     font-weight: 900; 
     font-size: 1.5rem; 
-    color: var(--dorado-copa); 
+    color: #ffd700; 
 }
 
-/* --- CONTENEDOR PRINCIPAL Y DISEÑO DE MAQUETA --- */
+/* ==========================================================================
+   3. LAYOUT GENERAL Y MAQUETACIÓN DE CONTENEDORES
+   ========================================================================== */
 .container { 
     display: flex; 
     padding: 30px 5%; 
     gap: 30px; 
-    align-items: flex-start;
+    align-items: flex-start; 
 }
 
 .products-area { 
     flex: 3; 
-    width: 100%;
+    width: 100%; 
 }
 
 .section-title { 
     margin-bottom: 25px; 
     font-weight: 900; 
     text-transform: uppercase; 
-    border-bottom: 3px solid var(--dorado-copa); 
+    border-bottom: 3px solid #ffd700; 
     display: inline-block; 
-    color: var(--dorado-copa);
+    color: #ffd700; 
 }
 
-/* --- GRID DE PRODUCTOS Y TARJETAS PREMIUM --- */
-.grid-products, #contenedor-productos { 
+.grid-products, 
+#contenedor-productos { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
     gap: 25px; 
-    width: 100%;
+    width: 100%; 
 }
 
+/* ==========================================================================
+   4. TARJETAS DEL CATÁLOGO DE PRODUCTOS (GLASSMORPHISM)
+   ========================================================================== */
 .product-card { 
-    background: var(--glass-bg); 
-    backdrop-filter: blur(12px);
-    border: var(--border-light); 
+    background: rgba(255, 255, 255, 0.06); 
+    backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
     border-radius: 15px; 
     padding: 20px; 
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    transition: all 0.4s ease; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
     height: 100%;
 }
 
 .product-card:hover { 
-    transform: translateY(-8px); 
-    border-color: var(--dorado-copa);
-    box-shadow: 0 10px 25px rgba(0, 150, 255, 0.3);
+    transform: translateY(-10px); 
+    border-color: #ffd700; 
+    box-shadow: 0 10px 25px rgba(0, 150, 255, 0.3); 
 }
 
 .product-card img { 
     width: 100%; 
     height: 200px; 
     object-fit: contain; 
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
+    margin-bottom: 15px; 
+    transition: transform 0.3s; 
 }
 
 .product-card:hover img { 
@@ -110,7 +109,7 @@ body {
 }
 
 .price { 
-    color: var(--dorado-copa); 
+    color: #ffd700; 
     font-weight: 900; 
     font-size: 1.4rem; 
     display: block; 
@@ -123,23 +122,25 @@ body {
     margin-bottom: 12px; 
 }
 
-/* --- CONTROL DE BOTONES PRINCIPALES --- */
+/* ==========================================================================
+   5. BOTONES DE ACCIÓN E INTERACCIONES INTERACTIVAS
+   ========================================================================== */
 .btn-add { 
-    background: linear-gradient(45deg, var(--azul-marino), var(--azul-brillante)); 
+    background: linear-gradient(45deg, #001f5b, #00509d); 
     color: white; 
     border: none; 
     padding: 12px; 
     width: 100%; 
     border-radius: 8px; 
     cursor: pointer; 
-    font-weight: 700;
+    font-weight: 700; 
     text-transform: uppercase; 
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; 
 }
 
 .btn-add:hover { 
-    background: var(--dorado-copa); 
-    color: var(--azul-marino); 
+    background: #ffd700; 
+    color: #001f5b; 
 }
 
 .btn-add:disabled { 
@@ -148,41 +149,43 @@ body {
     cursor: not-allowed; 
 }
 
-.btn-add.btn-agregado {
-    background: linear-gradient(45deg, #1e7e34, var(--verde-exito)) !important;
-    color: #ffffff !important;
-    transform: scale(0.95);
-    box-shadow: 0 0 12px rgba(40, 167, 69, 0.4);
+.btn-add.btn-agregado { 
+    background: linear-gradient(45deg, #1e7e34, #28a745) !important; 
+    color: #ffffff !important; 
+    transform: scale(0.95); 
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.4); 
 }
 
-/* --- RESPONSIVIDAD ADAPTATIVA MULTIDISPOSITIVO --- */
+/* ==========================================================================
+   6. MEDIA QUERIES Y ADAPTABILIDAD MÓVIL (RESPONSIVE DESIGN)
+   ========================================================================== */
 @media (max-width: 950px) {
     .container { 
-        flex-direction: column; 
-        padding: 20px 4%;
+        flex-direction: column !important; 
+        padding: 20px 4%; 
     }
-    
     .products-area { 
-        order: 2; 
+        width: 100% !important; 
+        order: 2 !important; 
     }
-
     .cart-sidebar { 
         width: 100% !important; 
-        min-width: 100% !important;
+        min-width: 100% !important; 
         position: static !important; 
-        margin-top: 10px;
-        margin-bottom: 30px;
-        order: 1; 
+        margin-top: 10px; 
+        margin-bottom: 30px; 
+        order: 1 !important; 
     }
 }
 
 @media (max-width: 580px) {
-    .grid-products, #contenedor-productos {
-        grid-template-columns: 1fr;
+    .grid-products, 
+    #contenedor-productos { 
+        grid-template-columns: 1fr !important; 
+        justify-items: center; 
     }
     .product-card { 
         width: 100%; 
         max-width: 320px; 
-        margin: 0 auto;
     }
 } 
