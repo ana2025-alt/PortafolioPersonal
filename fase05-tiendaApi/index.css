@@ -1,0 +1,76 @@
+/* --- RESET GENERAL Y ESTILOS BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98)),
+                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964') fixed center/cover;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.tienda-main-content {
+    padding: 40px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.tienda-navbar {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.tienda-logo {
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tienda-icono-react {
+    display: inline-block;
+    animation: rotarReact 8s linear infinite;
+}
+
+@keyframes rotarReact {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.tienda-badge-asignacion {
+    background: linear-gradient(45deg, #0284c7, #0369a1);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 15px rgba(2, 132, 199, 0.3);
+}
+
+@media (max-width: 600px) {
+    .tienda-navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+} 
