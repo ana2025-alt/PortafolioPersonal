@@ -18,6 +18,11 @@ export default function App() {
             <main className="tienda-main-content">
                 <ProductListContainer />
             </main>
+
+            {/* 📝 PIE DE PÁGINA CON CRÉDITOS PERSONALES */}
+            <footer className="tienda-footer">
+                <p>© 2026 | Desarrollado por <span>Ana Anselmi</span> (C.I. 29640288) - Asignación 5</p>
+            </footer>
         </div>
     );
 } 
