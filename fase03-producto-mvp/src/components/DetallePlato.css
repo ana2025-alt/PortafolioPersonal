@@ -1,0 +1,55 @@
+.panel-detalle-izquierdo {
+    background: var(--bg-detalle);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid var(--borde-sutil);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 600px;
+}
+
+.tag-tipo-fijo {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    background: #cb9221;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.titulo-plato-fijo {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.calorias-fijas {
+    color: var(--color-neon-lila);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.contenedor-imagen-flotante {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.img-plato-premium {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #1c133a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(199,125,255,0.2);
+    transition: transform 0.3s ease;
+}
+
+.img-plato-premium:hover { transform: scale(1.05) rotate(2deg); }
+.seccion-ingredientes h4 { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 8px; }
+.seccion-ingredientes ul { list-style: none; font-size: 0.88rem; color: #94a3b8; }
+.seccion-ingredientes li { margin-bottom: 4px; } 

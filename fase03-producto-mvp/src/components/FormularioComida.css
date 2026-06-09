@@ -1,0 +1,46 @@
+.form-inferior-izq {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.input-mvp-pro {
+    background: #0a0616;
+    border: 1px solid rgba(199, 125, 255, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    font-size: 0.85rem;
+    transition: border-color 0.2s;
+}
+
+.input-mvp-pro:focus {
+    border-color: var(--color-neon-lila);
+}
+
+.row-inputs-pro {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 10px;
+}
+
+.btn-agregar-pro {
+    background: var(--degradado-pro);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-agregar-pro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+} 

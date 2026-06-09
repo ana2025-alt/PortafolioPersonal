@@ -1,0 +1,40 @@
+======================================================================
+ARQUITECTURA DE COMPONENTES Y FLUJO DE DATOS - NUTRITRACK (FASE 3)
+======================================================================
+
+1. NODO RAÍZ (index.html)
+   └── Vincula el contenedor con ID 'raiz' al ciclo de vida de React.
+
+2. ENTRADA PRINCIPAL (principal.jsx)
+   └── Inicializa React.StrictMode e inyecta las hojas de estilos globales.
+
+3. COMPONENTE PADRE / ORQUESTADOR (Aplicacion.jsx)
+   │
+   ├── Estados Globales Manejados (useState):
+   │   ├── comidas: Array persistente indexado con las recetas del plan diario.
+   │   └── busqueda: Filtro reactivo en tiempo real para la barra de búsqueda.
+   │
+   ├── Persistencia de Datos (Efectos):
+   │   └── useEffect: Sincroniza el estado 'comidas' con el LocalStorage del navegador.
+   │
+   ├── Funciones Lógicas Centrales:
+   │   ├── manejarAgregarComida(): Eleva los nuevos platos resguardando la inmutabilidad.
+   │   ├── manejarAlternarListo(): Conmuta el booleano de ingesta (.listo) de forma reactiva.
+   │   └── manejarEliminarComida(): Excluye del array mediante filtrado sutil basado en IDs (Date.now()).
+   │
+   └── Lógica Predictiva Integrada:
+       └── asignarImagenAutomatica(): Algoritmo condicional basado en strings para enlazar URLs multimedia.
+
+4. COMPONENTES HIJOS / ATÓMICOS DESACOPLADOS (Folder: /components)
+   │
+   ├── 📄 FormularioComida.jsx + FormularioComida.css
+   │   ├── Encapsula sus propios estados locales de captura (plato, tipo, calorias).
+   │   └── Comunica los datos al padre mediante la prop 'onAgregar' tras validar el onSubmit.
+   │
+   ├── 📄 DetallePlato.jsx + DetallePlato.css
+   │   ├── Componente de renderizado puro (Presentacional).
+   │   └── Recibe la prop 'platoDestacado' para proyectar macros, ingredientes e imágenes a la izquierda.
+   │
+   └── 📄 TarjetaComida.jsx + TarjetaComida.css
+       ├── Nodo repetitivo generado dinámicamente mediante el mapeo del array (.map).
+       └── Dispara eventos hacia el padre usando las props 'onAlternar' y 'onEliminar'. 

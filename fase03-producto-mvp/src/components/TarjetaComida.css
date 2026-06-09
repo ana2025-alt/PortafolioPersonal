@@ -1,0 +1,85 @@
+.seccion-lista-derecha {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tarjeta-comida-pro {
+    background: var(--bg-tarjetas);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: 18px 25px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tarjeta-comida-pro:hover {
+    border-color: rgba(199, 125, 255, 0.2);
+    transform: translateX(4px);
+}
+
+.tarjeta-comida-pro.completada-status {
+    background: linear-gradient(90deg, #111b24, #120b22);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+
+.info-comida-flex { display: flex; flex-direction: column; gap: 5px; }
+.info-comida-flex h4 { font-size: 1.05rem; color: #ffffff; }
+.tarjeta-comida-pro.completada-status .info-comida-flex h4 { color: var(--color-neon-verde); }
+
+.badge-categoria {
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+.badge-categoria.desayuno { background: rgba(234, 179, 8, 0.15); color: #eab308; }
+.badge-categoria.almuerzo { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.badge-categoria.merienda { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.badge-categoria.cena { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+
+.calorias-flama { font-size: 0.8rem; color: var(--color-neon-lila); }
+
+.imagen-miniatura-contenedor {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #231842;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.img-miniatura { width: 100%; height: 100%; object-fit: cover; }
+
+.acciones-derecha-flex { display: flex; align-items: center; gap: 15px; }
+
+.btn-estado-check {
+    background: transparent;
+    border: 1px solid rgba(199, 125, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--color-pendiente);
+    min-width: 100px;
+    transition: all 0.2s ease;
+}
+
+.btn-estado-check.checked-pro {
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid var(--color-neon-verde);
+    color: var(--color-neon-verde);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.check-done-box { display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.check-done-box small { font-size: 0.65rem; text-transform: uppercase; font-weight: bold; }
+.check-icon-svg { font-size: 1.1rem; font-weight: bold; }
+
+.btn-borrar-pro { background: transparent; border: none; cursor: pointer; font-size: 1rem; padding: 5px; opacity: 0.5; transition: all 0.2s; }
+.btn-borrar-pro:hover { opacity: 1; transform: scale(1.2); }
+.caja-vacia-pro { padding: 40px; text-align: center; border: 2px dashed rgba(199, 125, 255, 0.2); border-radius: 16px; color: #64748b; } 
