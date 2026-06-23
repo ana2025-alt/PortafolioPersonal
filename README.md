@@ -7,7 +7,7 @@ Bienvenido al repositorio oficial de mi portafolio técnico, donde se recopilan 
 ### 👤 Información General
 * **Estudiante:** Ana Alexandra Anselmi Pallares
 * **Cédula de Identidad:** V-29.640.288
-* **Especialidad:** Informática 
+* **Especialidad:** Programación
 * **Institución:** ITSU (2026)
 * **Ubicación:** Venezuela
 
