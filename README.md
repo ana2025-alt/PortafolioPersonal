@@ -37,7 +37,7 @@ El repositorio está estructurado en fases modulares que demuestran la evolució
 * **Descripción:** Catálogo dinámico síncrono conectado a una base de datos externa.
 * **Enfoque Técnico:** Implementación de arquitectura avanzada de software dividida en **Componentes Inteligentes (Contenedores Lógicos)** y **Componentes Puros de Presentación**. Consumo asíncrono de servicios mediante Fetch API a `fakestoreapi.com`, control de estados condicionales (`loading`, `error`, `success`) y diseño estético futurista con *Glassmorphism*.
 
-* ⚙️ [Asignación 06: Módulos, Estructura y Auditoría Consola (F12)](./fase06-optimizacion/index.html)
+* ⚙️ [FASE 06: Módulos, Estructura y Auditoría Consola (F12)](./fase06-optimizacion/index.html)
 
 Descripción: Consolidación y modularización completa del portafolio técnico con guía avanzada de depuración.
 
