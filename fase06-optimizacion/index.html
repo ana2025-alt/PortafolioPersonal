@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Académico - Ana Anselmi (ITSÚ 2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Rowdies:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand">PORTAFOLIO<span>_TECH</span></div>
+        <div class="student-badge">Ana Anselmi | C.I. 29.640.288</div>
+    </header>
+
+    <div class="wrapper">
+        <section class="hero-section">
+            <h1>PORTAFOLIO ACADÉMICO — DESARROLLO WEB & MÓVIL</h1>
+            <p>Recopilación oficial de soluciones de programación, arquitectura y servicios web (ITSÚ 2026)</p>
+        </section>
+
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('fases', this)">📚 Asignaciones (Fases 1-5)</button>
+            <button class="tab-btn" onclick="switchTab('f12', this)">🛠️ Guía Consola F12</button>
+            <button class="tab-btn" onclick="switchTab('modular', this)">📁 Estructura y API</button>
+        </div>
+
+        <div id="section-fases" class="view-content active">
+            <div class="split-layout">
+                <div>
+                    <button class="menu-item-card active" onclick="loadAsignacion(1)">⚽ Fase 01: Merchandising</button>
+                    <button class="menu-item-card" onclick="loadAsignacion(2)">🎛️ Fase 02: Arquitectura</button>
+                    <button class="menu-item-card" onclick="loadAsignacion(3)">🌱 Fase 03: Producto MVP</button>
+                    <button class="menu-item-card" onclick="loadAsignacion(4)">🚀 Fase 04: Luxury Showroom</button>
+                    <button class="menu-item-card" onclick="loadAsignacion(5)">🛍️ Fase 05: Fake Store API</button>
+                </div>
+                <div class="viewer-panel">
+                    <h3 class="viewer-title" id="asig-title">Fase 01: Merchandising</h3>
+                    <img id="asig-img" class="viewer-image" src="" alt="Asignación">
+                    <label style="color:var(--gold-ssj); font-size:0.8rem;">Descripción y Enfoque Técnico:</label>
+                    <textarea id="asig-desc" class="editable-textarea" rows="4"></textarea>
+                    <label style="color:var(--gold-ssj); font-size:0.8rem;">Snippet de Código:</label>
+                    <textarea id="asig-code" class="code-box" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-f12" class="view-content">
+            <h2 style="color:var(--gold-ssj); margin-bottom: 15px; font-family:'Rowdies'; font-size:1.4rem;">Explicación Profesional de la Consola (F12)</h2>
+            <p style="color:var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">Las Herramientas de Desarrollador del navegador son indispensables para auditar código en vivo, depurar errores y verificar la conectividad de red.</p>
+            
+            <div class="f12-grid">
+                <div class="f12-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=300" alt="Elements">
+                    <h4>1. Pestaña Elements (DOM)</h4>
+                    <p>Permite inspeccionar la estructura HTML en vivo y auditar selectores CSS, validando cómo actúan los estilos sobre los contenedores.</p>
+                </div>
+                <div class="f12-card">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=300" alt="Console">
+                    <h4>2. Pestaña Console (Depuración)</h4>
+                    <p>Muestra registros del sistema mediante <code>console.log()</code>, errores de ejecución o trazas de objetos en formato de tabla con <code>console.table()</code>.</p>
+                </div>
+                <div class="f12-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=300" alt="Network">
+                    <h4>3. Pestaña Network (Red y APIs)</h4>
+                    <p>Audita peticiones HTTP asíncronas. Vital para comprobar estados 200 OK y examinar la estructura JSON devuelta por servicios externos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-modular" class="view-content">
+            <h3 style="color:var(--gold-ssj); margin-bottom:10px;">Estructura de Carpetas Modular:</h3>
+            <div class="folder-tree">
+mi-portafolio-asignacion6/
+├── index.html
+├── style.css
+├── script.js
+└── src/
+    └── modules/
+        ├── apiService.js    &lt;-- Lógica de consumo de API (Fase 5)
+        └── inventario.js    &lt;-- Lógica modular de stock (Fase 2)
+            </div>
+
+            <h3 style="color:var(--gold-ssj); margin:25px 0 10px;">Prueba de Consumo de API en Vivo (Fase 5):</h3>
+            <div class="api-tester">
+                <button class="api-btn" onclick="probarApiExterna()">Probar Conexión con Fake Store API</button>
+                <div id="api-output" class="api-output">Esperando solicitud HTTP...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 | Portafolio Académico — Desarrollado por Ana Anselmi (ITSÚ)</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
