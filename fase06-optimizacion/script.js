@@ -37,10 +37,12 @@ const asignacionesDB = {
     }
 };
 
-// Función para cargar la información de cada fase en el panel interactivo
-function loadAsignacion(id) {
-    document.querySelectorAll('.menu-item-card').forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+// Función para cargar la información y marcar el botón activo correctamente
+function loadAsignacion(id, element) {
+    if (element) {
+        document.querySelectorAll('.menu-item-card').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+    }
 
     document.getElementById('asig-title').innerText = asignacionesDB[id].title;
     document.getElementById('asig-img').src = asignacionesDB[id].img;
@@ -52,7 +54,7 @@ function loadAsignacion(id) {
 function switchTab(target, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    btn.classList.add('active');
     document.getElementById('section-' + target).classList.add('active');
 }
 
@@ -69,5 +71,10 @@ async function probarApiExterna() {
     }
 }
 
-// Cargar por defecto la Fase 1 al abrir la página
-window.onload = () => loadAsignacion(1); 
+// Cargar por defecto la Fase 1 al abrir la página seleccionando el primer botón automáticamente
+window.onload = () => {
+    const primerBoton = document.querySelector('.menu-item-card');
+    if (primerBoton) {
+        loadAsignacion(1, primerBoton);
+    }
+}; 
