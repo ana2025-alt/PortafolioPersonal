@@ -5,7 +5,6 @@ Desarrollar un dashboard interactivo modular que documente las fases del portafo
 2. Arquitectura y Modularización del Código
 Para cumplir con los estándares de mantenibilidad y orden, se eliminó la estructura monolítica (archivos gigantes) y se dividió el proyecto en carpetas y archivos independientes:
 
-Texto plano
 fase06-optimizacion/
 ├── index.html            <-- Estructura semántica limpia y contenedores principales
 ├── style.css             <-- Capa de diseño visual, variables CSS y adaptabilidad (Grid/Flexbox)
@@ -14,6 +13,8 @@ fase06-optimizacion/
     └── modules/
         ├── apiService.js   <-- Módulo ES6 para la gestión centralizada de peticiones HTTP (Fetch)
         └── inventario.js   <-- Módulo ES6 para el control lógico del stock y validación de datos
+
+        
 3. Proceso de Desarrollo Paso a Paso
 Paso 1: Creación de la Estructura Base (index.html)
 Se diseñó un documento HTML5 semántico estructurado en componentes lógicos:
